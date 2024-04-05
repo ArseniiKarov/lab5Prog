@@ -26,14 +26,15 @@ public class JsonReader {
         }
         return str.toString();
     }
-
-    public void jsonReader(String str) {
+    public CollectionManager jsonReader(String str) {
         Type type = new TypeToken<TreeMap<String, Worker>>() {}.getType();
         try {
             map = new Gson().fromJson(str, type);
             CollectionManager collectionManager = new CollectionManager(map);
+            return collectionManager;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return null;
     }
 }

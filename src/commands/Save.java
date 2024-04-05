@@ -8,7 +8,8 @@ import java.io.IOException;
 public class Save implements Command {
     @Override
     public void execute(String[] arg) throws IOException {
-        JsonWriter.write();
+        JsonWriter.write(arg[0]);
+        System.out.println("Сохранено");
     }
 
     @Override

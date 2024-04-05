@@ -1,0 +1,29 @@
+{
+  "1`": {
+    "id": 21503,
+    "name": "1",
+    "coordinates": {
+      "x": 1,
+      "y": 11
+    },
+    "creationDate": "Apr 5, 2024, 3:44:54 PM",
+    "salary": 1.0,
+    "startDate": "Apr 5, 2024, 3:44:54 PM",
+    "endDate": "Apr 5, 2024, 3:44:54 PM",
+    "position": "DIRECTOR",
+    "organization": {
+      "fullName": "1",
+      "employeesCount": 1,
+      "type": "COMMERCIAL",
+      "officialAddress": {
+        "street": "1",
+        "zipCode": "1234546",
+        "town": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+        }
+      }
+    }
+  }
+}

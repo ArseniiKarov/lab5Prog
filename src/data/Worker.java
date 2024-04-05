@@ -1,16 +1,19 @@
 package data;
+
 import data.generators.IdGenerator;
 import manager.Validator;
-import java.time.LocalDate;
+
+import java.time.Instant;
+import java.util.Date;
 
 public class Worker implements Comparable<Worker>{
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
-    private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private Date creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private float salary; //Значение поля должно быть больше 0
-    private java.time.LocalDate startDate; //Поле не может быть null
-    private java.time.LocalDate endDate; //Поле может быть null
+    private Date startDate; //Поле не может быть null
+    private Date endDate; //Поле может быть null
     private Position position; //Поле не может быть null
     private Organization organization; //Поле может быть null
 
@@ -34,10 +37,10 @@ public class Worker implements Comparable<Worker>{
         this.id = Long.parseLong(data[1]);
         this.name = data[2];
         this.coordinates = new Coordinates(Long.parseLong(data[3]), Long.parseLong(data[4]));
-        this.creationDate = LocalDate.now();
+        this.creationDate = Date.from(Instant.now());
         this.salary = Float.parseFloat(data[5]);
-        this.startDate = LocalDate.now();
-        this.endDate= LocalDate.now();
+        this.startDate = Date.from(Instant.now());
+        this.endDate= Date.from(Instant.now());
         this.position = Position.valueOf(data[6]);
         this.organization = new Organization(data[7], Integer.parseInt(data[8]), OrganizationType.valueOf(data[9]), new Address(data[10], data[11], new Location(Double.parseDouble(data[12]), Float.parseFloat(data[13]), Float.parseFloat(data[14]))));
 
@@ -47,10 +50,10 @@ public class Worker implements Comparable<Worker>{
         this.id = IdGenerator.generateid();
         this.name = null;
         this.coordinates = null;
-        this.creationDate = LocalDate.now();
+        this.creationDate = Date.from(Instant.now());
         this.salary = 0;
-        this.startDate = LocalDate.now();
-        this.endDate= LocalDate.now();
+        this.startDate = Date.from(Instant.now());
+        this.endDate= Date.from(Instant.now());
         this.position = null;
         this.organization = null;
     }
@@ -59,10 +62,10 @@ public class Worker implements Comparable<Worker>{
         this.id = id;
         this.name = null;
         this.coordinates = null;
-        this.creationDate = LocalDate.now();
+        this.creationDate = Date.from(Instant.now());
         this.salary = 0;
-        this.startDate = LocalDate.now();
-        this.endDate= LocalDate.now();
+        this.startDate = Date.from(Instant.now());
+        this.endDate= Date.from(Instant.now());
         this.position = null;
         this.organization = null;
     }
@@ -99,7 +102,7 @@ public class Worker implements Comparable<Worker>{
         return coordinates;
     }
 
-    public LocalDate getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
@@ -107,11 +110,11 @@ public class Worker implements Comparable<Worker>{
         return salary;
     }
 
-    public LocalDate getStartDate(){
+    public Date getStartDate(){
         return startDate;
     }
 
-    public LocalDate getEndDate(){
+    public Date getEndDate(){
         return endDate;
     }
 
@@ -143,7 +146,7 @@ public class Worker implements Comparable<Worker>{
         this.coordinates = coordinates;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -151,11 +154,11 @@ public class Worker implements Comparable<Worker>{
         this.salary = salary;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
