@@ -5,18 +5,36 @@ public class Address {
     private String zipCode; //Длина строки должна быть не меньше 7, Поле не может быть null
     private Location town; //Поле не может быть null
 
+    /**
+     * Конструктор адресса
+     * @param street улица
+     * @param zipCode индекс
+     * @param town город
+     */
     public Address(String street, String zipCode, Location town){
         this.street = street;
         this.zipCode = zipCode;
         this.town = town;
     }
 
+    /**
+     * Метод для получения улицы
+     * @return улица
+     */
     public String getStreet(){
         return street;
     }
+    /**
+     * Метод для получения индекса
+     * @return индекс
+     */
     public String getZipCode(){
         return zipCode;
     }
+    /**
+     * Метод для получения города
+     * @return город
+     */
     public Location getTown(){
         return town;
     }

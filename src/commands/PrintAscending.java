@@ -9,6 +9,11 @@ import java.util.TreeMap;
 import static manager.CollectionManager.getMap;
 
 public class PrintAscending implements Command {
+    /**
+     * Метод для выполнения команда
+     * @param args аргументы
+     * @throws NoElementException ошибка отсутствия элемента
+     */
     @Override
     public void execute(String[] args) throws NoElementException {
         TreeMap<String, Worker> treeMap = getMap();
@@ -17,11 +22,19 @@ public class PrintAscending implements Command {
         }
     }
 
+    /**
+     * Метод для получения имени команды
+     * @return именя команды
+     */
     @Override
     public String getName() {
         return "print_ascending";
     }
 
+    /**
+     * Метод для описания команды
+     * @return описание
+     */
     @Override
     public String getDescription() {
         return "Print the elements of the collection in ascending order";

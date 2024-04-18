@@ -5,6 +5,11 @@ import data.generators.WorkerGenerator;
 import manager.CollectionManager;
 
 public class Insert implements Command {
+    /**
+     * Метод для выполнения команда
+     * @param arg аргументы
+     * @throws Exception ошибка
+     */
 
     @Override
     public void execute(String[] arg) throws Exception {
@@ -17,11 +22,19 @@ public class Insert implements Command {
 
     }
 
+    /**
+     * Метод для получения имени команды
+     * @return именя команды
+     */
     @Override
     public String getName() {
         return "insert";
     }
 
+    /**
+     * Метод для описания команды
+     * @return описание
+     */
     @Override
     public String getDescription() {
         return "добавить новый элемент с заданным ключом";

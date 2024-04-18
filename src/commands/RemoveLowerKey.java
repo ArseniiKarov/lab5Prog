@@ -8,6 +8,11 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 public class RemoveLowerKey implements Command {
+    /**
+     * Метод для выполнения команда
+     * @param arg аргументы
+     * @throws IncorrectInputException ошибка неправильного значения
+     */
     @Override
     public void execute(String[] arg) throws IncorrectInputException {
         TreeMap<String, Worker> map = CollectionManager.getMap();
@@ -23,11 +28,19 @@ public class RemoveLowerKey implements Command {
         CollectionManager.setMap(map);
     }
 
+    /**
+     * Метод для получения имени команды
+     * @return именя команды
+     */
     @Override
     public String getName() {
         return "remove_lower_key";
     }
 
+    /**
+     * Метод для описания команды
+     * @return описание
+     */
     @Override
     public String getDescription() {
         return "удалить из  коллекции все элементы ключ которых меньше, чем заданный";

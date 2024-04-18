@@ -1,8 +1,30 @@
 package manager;
+
 import data.OrganizationType;
 import data.Position;
+import data.Worker;
+import data.generators.IdGenerator;
 import errors.IncorrectInputException;
+
 public class Validator {
+    IdGenerator idGenerator = new IdGenerator();
+    public Worker getValidatedElement(Worker worker){
+        if (worker.getId() < 0 || worker.getName() == null || worker.getName().isBlank() || worker.getCoordinates() == null || worker.getCoordinates().getY() > 581 || worker.getSalary() < 0 || worker.getStartDate() == null || worker.getEndDate() == null || worker.getPosition() == null || worker.getOrganizationType() == null){
+            return null;
+        }else{
+            if (worker.getId() == 0){
+                worker.setId(IdGenerator.generateid());
+            }
+            return worker;
+        }
+    }
+
+    /**
+     * Метод для проверки значений больше нуля
+     * @param args аргумент
+     * @throws IncorrectInputException ошибка неправильного значения
+     */
+
     public static void moreThanZeroLong(String args) throws IncorrectInputException {
         try {
             long id = Long.parseLong(args);
@@ -14,6 +36,12 @@ public class Validator {
         }
     }
 
+    /**
+     * Метод для проверки значений больше нуля
+     * @param args аргумент
+     * @throws IncorrectInputException ошибка неправильного значения
+     */
+
     public static void moreThanZeroFloat(String args) throws IncorrectInputException {
         try {
             float salary = Float.parseFloat(args);
@@ -24,6 +52,11 @@ public class Validator {
             throw new IncorrectInputException("salary");
         }
     }
+    /**
+     * Метод для проверки значений больше нуля
+     * @param args аргумент
+     * @throws IncorrectInputException ошибка неправильного значения
+     */
 
     public static void moreThanZeroInt(String args) throws IncorrectInputException {
         try {
@@ -37,6 +70,11 @@ public class Validator {
     }
 
 
+    /**
+     * Метод для проверки координаты x
+     * @param args аргумент
+     * @throws IncorrectInputException ошибка неправильного значения
+     */
     public static void coordinateYIsRight(String args) throws IncorrectInputException, NullPointerException {
         try {
             long y = Long.parseLong(args);
@@ -49,6 +87,11 @@ public class Validator {
         }
     }
 
+    /**
+     * Метод для проверки координаты y
+     * @param args аргумент
+     * @throws IncorrectInputException ошибка неправильного значения
+     */
 
     public static boolean intIsInt(String args) throws IncorrectInputException {
         try{
@@ -58,6 +101,11 @@ public class Validator {
             return false;
         }
     }
+    /**
+     * Метод для проверки типа данных
+     * @param args аргумент
+     * @throws IncorrectInputException ошибка неправильного значения
+     */
 
     public static void doubleIsDouble(String args, String data) throws IncorrectInputException {
         try{
@@ -68,6 +116,12 @@ public class Validator {
         }
     }
 
+    /**
+     * Метод для проверки типа данных
+     * @param args аргумент
+     * @throws IncorrectInputException ошибка неправильного значения
+     */
+
     public static void longIsLong(String args, String data) throws IncorrectInputException {
         try{
             double value = Long.parseLong(args);
@@ -76,6 +130,11 @@ public class Validator {
             throw new IncorrectInputException(data);
         }
     }
+    /**
+     * Метод для проверки типа данных
+     * @param args аргумент
+     * @throws IncorrectInputException ошибка неправильного значения
+     */
 
     public static void floatIsFloat(String args, String data) throws IncorrectInputException {
         try{
@@ -88,6 +147,11 @@ public class Validator {
 
 
 
+    /**
+     * Метод для проверки позиции
+     * @param args аргумент
+     * @throws IncorrectInputException ошибка неправильного значения
+     */
     public static void positionIsRight(String args) throws IncorrectInputException {
         try {
             Position.valueOf(args);
@@ -95,6 +159,11 @@ public class Validator {
             throw new IncorrectInputException("Position");
         }
     }
+    /**
+     * Метод для проверки типа организации
+     * @param args аргумент
+     * @throws IncorrectInputException ошибка неправильного значения
+     */
 
     public static void organizationTypeIsRight(String args) throws IncorrectInputException {
         try {
@@ -104,10 +173,19 @@ public class Validator {
         }
     }
 
+    /**
+     * Метод для проверки непустой строки
+     * @param args аргумент
+     * @throws IncorrectInputException ошибка неправильного значения
+     */
+
     public static void inputIsNotEmpty(String args, String data) throws IncorrectInputException{
         if (args.isEmpty() || args.trim().isEmpty()) {
             throw new IncorrectInputException(data);
         }
+    }
+    public IdGenerator getIdGenerator(){
+        return idGenerator;
     }
 
 }

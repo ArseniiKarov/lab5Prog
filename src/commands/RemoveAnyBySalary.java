@@ -6,6 +6,11 @@ import errors.UnknownElementException;
 import manager.CollectionManager;
 
 public class RemoveAnyBySalary implements Command {
+    /**
+     * Метод для выполнения команда
+     * @param arg аргументы
+     * @throws NoElementException ошибка отсутствия элемента
+     */
     @Override
     public void execute(String[] arg) throws NoElementException {
         try {
@@ -26,11 +31,19 @@ public class RemoveAnyBySalary implements Command {
         }
     }
 
+    /**
+     * Метод для получения имени команды
+     * @return именя команды
+     */
     @Override
     public String getName() {
         return "remove_any_by_salary";
     }
 
+    /**
+     * Метод для описания команды
+     * @return описание
+     */
     @Override
     public String getDescription() {
         return "удалить из коллекции один элемент, значение поля salary которого эквивалентно заданному";

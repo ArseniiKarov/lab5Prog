@@ -6,6 +6,11 @@ import manager.Validator;
 import java.util.Scanner;
 
 public class WorkerGenerator {
+    /**
+     * Метод для генерации работника
+     * @param id id
+     * @return работника
+     */
     public static Worker createWorker(Long id) {
         System.out.println("Генерация");
         Scanner scanner = new Scanner(System.in);
@@ -250,7 +255,7 @@ public class WorkerGenerator {
 
         organization = new Organization(fullname, employeesCount, type, officialAddress);
         worker.setOrganization(organization);
-        System.out.println("Генерация закончено");
+        System.out.println("Генерация закончена");
 
         return worker;
 

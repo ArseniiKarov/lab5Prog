@@ -6,6 +6,11 @@ import errors.NoElementException;
 import manager.CollectionManager;
 
 public class UpdateId implements Command {
+    /**
+     * Метод для выполнения команда
+     * @param arg аргументы
+     * @throws NoElementException ошибка отсутствия элемента
+     */
     @Override
     public void execute(String[] arg) throws NoElementException {
         try {
@@ -29,11 +34,19 @@ public class UpdateId implements Command {
         }
     }
 
+    /**
+     * Метод для получения имени команды
+     * @return именя команды
+     */
     @Override
     public String getName() {
         return "update_id";
     }
 
+    /**
+     * Метод для описания команды
+     * @return описание
+     */
     @Override
     public String getDescription() {
         return "обновить значение элемента коллекции, id которого равен заданному";

@@ -11,6 +11,12 @@ import java.util.TreeMap;
 
 
 public class RemoveGreater implements Command {
+    /**
+     * Метод для выполнения команда
+     * @param args аргументы
+     * @throws NoElementException ошибка отсутствия элемента
+     * @throws Exception ошибка
+     */
     @Override
     public void execute(String[] args) throws NoElementException, Exception {
         Worker worker = WorkerGenerator.createWorker(0L);
@@ -31,11 +37,19 @@ public class RemoveGreater implements Command {
         }
     }
 
+    /**
+     * Метод для получения имени команды
+     * @return именя команды
+     */
     @Override
     public String getName() {
         return "remove_grater {element}";
     }
 
+    /**
+     * Метод для описания команды
+     * @return описание
+     */
     @Override
     public String getDescription() {
         return "удалить из коллекции все элементы, превышающие заданный";

@@ -5,6 +5,10 @@ import manager.CommandManager;
 import java.util.Map;
 
 public class Help implements Command {
+    /**
+     * Метод для выполнения команда
+     * @param args аргументы
+     */
     @Override
     public void execute(String[] args)  {
         CommandManager commandManager = new CommandManager();
@@ -15,11 +19,19 @@ public class Help implements Command {
         }
     }
 
+    /**
+     * Метод для получения имени команды
+     * @return именя команды
+     */
     @Override
     public String getName() {
         return "help";
     }
 
+    /**
+     * Метод для описания команды
+     * @return описание
+     */
     @Override
     public String getDescription() {
         return "вывести справку по доступным командам";
