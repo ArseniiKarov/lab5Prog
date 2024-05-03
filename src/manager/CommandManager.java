@@ -1,6 +1,6 @@
 package manager;
 
-import commands.*;
+import manager.commands.*;
 import errors.NoElementException;
 import errors.UnknownCommandException;
 

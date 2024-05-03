@@ -23,25 +23,17 @@ public class Worker implements Comparable<Worker>{
      * @throws Exception ошибка
      */
     public Worker(String[] data) throws Exception{
-        Validator.moreThanZeroLong(data[1]);
-        Validator.inputIsNotEmpty(data[2], "name");
-        Validator.longIsLong(data[3], "x");
-        Validator.coordinateYIsRight(data[4]);
-        Validator.moreThanZeroFloat(data[5]);
-        Validator.positionIsRight(data[6]);
-        Validator.inputIsNotEmpty(data[7], "fulllname");
-        Validator.moreThanZeroInt(data[8]);
-        Validator.organizationTypeIsRight(data[9]);
-        Validator.inputIsNotEmpty(data[10], "street");
-        Validator.inputIsNotEmpty(data[11], "zipCode");
-        Validator.doubleIsDouble(data[12], "x");
-        Validator.floatIsFloat(data[13], "y");
-        Validator.floatIsFloat(data[14], "z");
+        //Validator.moreThanZeroLong(data[1]);
+        Validator.stringNotEmpty(data[1]);
+        Validator.isLong(data[2]);
+        Validator.correctPositionY(data[3]);
+        Validator.correctPositionX(data[4]);
+        Validator.moreThanZero(data[5]);
 
 
         this.id = Long.parseLong(data[1]);
         this.name = data[2];
-        this.coordinates = new Coordinates(Long.parseLong(data[3]), Long.parseLong(data[4]));
+        this.coordinates = new Coordinates(Long.parseLong(data[3]), Long.valueOf(data[4]));
         this.creationDate = LocalDateTime.now();
         this.salary = Float.parseFloat(data[5]);
         this.startDate = LocalDateTime.now();
@@ -281,6 +273,4 @@ public class Worker implements Comparable<Worker>{
     public int compareTo(Worker worker){
         return this.organization.getEmployeesCount() - worker.organization.getEmployeesCount();
     }
-
-
 }

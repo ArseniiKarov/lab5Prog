@@ -9,9 +9,13 @@ public class Coordinates {
      * @param x x
      * @param y y
      */
-    public Coordinates(long x, long y) {
+    public Coordinates(long x, Long y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Coordinates() {
+
     }
 
     /**
@@ -49,7 +53,7 @@ public class Coordinates {
      * Метод для получения вектора
      * @return вектор
      */
-    public int getVektor(long x, long y){
+    public int getVector(long x, long y){
         return Integer.parseInt(String.valueOf(Math.sqrt(x^2 + y^2)));
     }
 }

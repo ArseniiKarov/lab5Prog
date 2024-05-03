@@ -17,6 +17,10 @@ public class Address {
         this.town = town;
     }
 
+    public Address() {
+
+    }
+
     /**
      * Метод для получения улицы
      * @return улица
@@ -37,5 +41,17 @@ public class Address {
      */
     public Location getTown(){
         return town;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setZipCode(String code) {
+        this.zipCode = code;
+    }
+
+    public void setTown(Location town) {
+        this.town = town;
     }
 }

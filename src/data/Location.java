@@ -17,6 +17,9 @@ public class Location {
         this.z = z;
     }
 
+    public Location() {
+    }
+
     /**
      * Метод для получения x
      * @return x

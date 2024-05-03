@@ -1,6 +1,6 @@
 package manager;
 
-import commands.ExecuteScript;
+import manager.commands.ExecuteScript;
 import errors.NoElementException;
 
 import java.io.InputStream;

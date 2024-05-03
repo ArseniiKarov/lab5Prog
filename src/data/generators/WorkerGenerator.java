@@ -15,34 +15,17 @@ public class WorkerGenerator {
         System.out.println("Генерация");
         Scanner scanner = new Scanner(System.in);
 
-        String input;
-        Coordinates coordinates;
-        long x;
-        long y;
-        Organization organization;
-        String fullname;
-        int employeesCount;
-        OrganizationType type;
-        Address officialAddress;
-        String street;
-        String zipCode;
-        Location town;
-        double locX;
-        float locY;
-        float locZ;
+        Address address = new Address();
+        Organization org = new Organization();
+        Coordinates coords = new Coordinates();
 
+        Worker worker = (id==0) ? new Worker() : new Worker(id);
 
-        Worker worker;
-        if (id==0){
-            worker = new Worker();
-        }else{
-            worker = new Worker(id);
-        }
-
+        // worker name
         while(true){
             try{
                 System.out.println("Введите имя:");
-                input = scanner.nextLine();
+                String input = scanner.nextLine();
                 worker.setName(input);
                 if (!(input.isEmpty())){
                     break;
@@ -53,37 +36,39 @@ public class WorkerGenerator {
                 System.out.println(e.getMessage());
             }
         }
+
+        // coord x
         while (true) {
             try {
                 System.out.println("Введите координату x : ");
-                x = Long.parseLong(scanner.nextLine());
+                long x =Long.parseLong(scanner.nextLine());
+                coords.setX(x);
                 break;
             } catch (Exception e) {
                 System.out.println("необходимо ввести число");
             }
         }
 
-
+        // coord y
         while (true) {
             try {
                 System.out.println("Введите координату y (максимальное значение 581): ");
-                y = Long.parseLong(scanner.nextLine());
-                if(y<=581){
+                long y = Long.parseLong(scanner.nextLine());
+                if (y <= 581) {
                     break;
-                }else{
+                } else {
                     System.out.println("слишком большое значение");
                 }
+                coords.setY(y);
             } catch (Exception e) {
                 System.out.println("необходимо ввести число");
             }
         }
+        worker.setCoordinates(coords);
 
-        coordinates = new Coordinates(x, y);
-        worker.setCoordinates(coordinates);
-
-        while(true){
+        while (true) {
             try{
-                System.out.println("Введите зарплату:");
+                System.out.println("Введите зарплату сотрудника:");
                 float salary = Float.parseFloat(scanner.nextLine());
                 if(salary > 0){
                     worker.setSalary(salary);
@@ -96,11 +81,12 @@ public class WorkerGenerator {
             }
         }
 
+        // worker pos
         while (true) {
             try {
-                System.out.println("Введите позицию: DIRECTOR" + "   HUMAN_RESOURCES" + "   BAKER");
-                input = scanner.nextLine();
-                if (Validator.intIsInt(input)){
+                System.out.println("Введите позицию: DIRECTOR | HUMAN_RESOURCES | BAKER");
+                String input = scanner.nextLine();
+                if (Validator.isInt(input)){
                     int index = Integer.parseInt(input);
                     Position position = switch (index) {
                         case 1 -> Position.DIRECTOR;
@@ -123,37 +109,44 @@ public class WorkerGenerator {
                 System.out.println(e.getMessage());
             }
         }
-        while(true){
-            try{
+
+        // org
+        while (true) {
+            try {
                 System.out.println("Введите имя организации:");
-                fullname = scanner.nextLine();
+                String fullname = scanner.nextLine();
                 if (!(fullname.isEmpty())){
+                    worker.setName(fullname);
                     break;
-                }else{
+                } else {
                     System.out.println("имя не может быть пустым");
                 }
-            }catch(Exception e){
+            } catch(Exception e) {
                 System.out.println(e.getMessage());
             }
         }
-        while(true){
-            try{
+
+        while (true) {
+            try {
                 System.out.println("Введите количество работников:");
-                employeesCount = Integer.parseInt(scanner.nextLine());
-                if(employeesCount > 0){
+                int employeesCount = Integer.parseInt(scanner.nextLine());
+                if (employeesCount > 0) {
+                    org.setEmployeesCount(employeesCount);
                     break;
-                }else{
+                } else {
                     System.out.println("количество работников не может быть отрицательной или 0");
                 }
-            }catch(Exception e){
+            } catch(Exception e) {
                 System.out.println(e.getMessage());
             }
         }
+
         while (true) {
             try {
                 System.out.println("Введите тип организации: COMMERCIAL" + "   GOVERNMENT" + "   TRUST" + "   PRIVATE_LIMITED_COMPANY" + "   OPEN_JOINT_STOCK_COMPANY");
-                input = scanner.nextLine();
-                if (Validator.intIsInt(input)){
+                String input = scanner.nextLine();
+
+                if (Validator.isInt(input)){
                     int index = Integer.parseInt(input);
                     OrganizationType organizationType = switch (index) {
                         case 1 -> OrganizationType.COMMERCIAL;
@@ -164,14 +157,14 @@ public class WorkerGenerator {
                         default -> null;
                     };
                     if (organizationType == null){
-                        System.out.println("слишком большое значение");
+                        System.out.println("введите цифру или значение типа организации");
                     }else{
-                        type = organizationType;
+                        org.setType(organizationType);
                         break;
                     }
                 }else {
-                    input = input.toUpperCase();
-                    type = OrganizationType.valueOf(input);
+                    OrganizationType type = OrganizationType.valueOf(input.toUpperCase());
+                    org.setType(type);
                     break;
                 }
             } catch (Exception e) {
@@ -183,48 +176,40 @@ public class WorkerGenerator {
         while(true){
             try{
                 System.out.println("Введите улицу :");
-                street = scanner.nextLine();
+                String street = scanner.nextLine();
                 if (!(street.isEmpty())){
                     break;
                 }else{
                     System.out.println("улица не может быть пустым");
                 }
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }
-        }
-
-        while(true){
-            try{
-                System.out.println("Введите почтовый индекс:");
-                zipCode = scanner.nextLine();
-                if (zipCode.length() >= 7){
-                    break;
-                }else{
-                    System.out.println("почтовый индекс должен быть не меньше 7");
-                }
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }
-        }
-        while(true){
-            try{
-                System.out.println("Введите почтовый индекс:");
-                zipCode = scanner.nextLine();
-                if (zipCode.length() >= 7){
-                    break;
-                }else{
-                    System.out.println("почтовый индекс должен быть не меньше 7");
-                }
+                address.setStreet(street);
             }catch(Exception e){
                 System.out.println(e.getMessage());
             }
         }
 
         while (true) {
+            try{
+                System.out.println("Введите почтовый индекс:");
+                String zipCode = scanner.nextLine();
+                if (zipCode.length() >= 7){
+                    break;
+                }else{
+                    System.out.println("почтовый индекс должен быть не меньше 7");
+                }
+                address.setZipCode(zipCode);
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+
+        Location town = new Location();
+
+        while (true) {
             try {
                 System.out.println("Введите координату x для локации: ");
-                locX = Double.parseDouble(scanner.nextLine());
+                double locX = Double.parseDouble(scanner.nextLine().strip());
+                town.setX(locX);
                 break;
             } catch (Exception e) {
                 System.out.println("необходимо ввести число");
@@ -234,27 +219,29 @@ public class WorkerGenerator {
         while (true) {
             try {
                 System.out.println("Введите координату y для локации: ");
-                locY = Float.parseFloat(scanner.nextLine());
+                float locY = Float.parseFloat(scanner.nextLine().strip());
+                town.setY(locY);
                 break;
             } catch (Exception e) {
                 System.out.println("необходимо ввести число");
             }
         }
+
         while (true) {
             try {
                 System.out.println("Введите координату z для локации: ");
-                locZ = Float.parseFloat(scanner.nextLine());
+                float locZ = Float.parseFloat(scanner.nextLine().strip());
+                town.setZ(locZ);
                 break;
             } catch (Exception e) {
                 System.out.println("необходимо ввести число");
             }
         }
-        town = new Location(locX, locY, locZ);
 
-        officialAddress = new Address(street, zipCode, town);
-
-        organization = new Organization(fullname, employeesCount, type, officialAddress);
-        worker.setOrganization(organization);
+        address.setTown(town);
+        org.setOfficialAddress(address);
+        worker.setOrganization(org);
+        worker.setCoordinates(coords);
         System.out.println("Генерация закончена");
 
         return worker;

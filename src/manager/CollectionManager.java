@@ -37,43 +37,53 @@ public class CollectionManager {
         }
     }
 
-    /**
-     * Метод для добавления элемента в коллекцию
-     *
-     * @param key    ключ
-     * @param worker работник
-     */
     public static void add(String key, Worker worker) {
         if (map == null) {
             map = new TreeMap<>();
         }
         map.put(key, worker);
     }
+        /**
+         * Метод для добавления элемента в коллекцию
+         *
+         * @param key    ключ
+         * @param worker работник
+         */
 
-    private TreeMap<String, Worker> treeMap;
+        private TreeMap<String, Worker> treeMap;
 
     public CollectionManager() {
-        this.treeMap = new TreeMap<>();
-    }
+            this.treeMap = new TreeMap<>();
+        }
 
-    /**
-     * Метод для получения коллекции
-     *
-     * @return коллекция
-     */
+        /**
+         * Метод для получения коллекции
+         *
+         * @return коллекция
+         */
 
-    public static TreeMap<String, Worker> getMap() {
-        return map;
-    }
+        public static TreeMap<String, Worker> getMap () {
+            return map;
+        }
 
-    /**
-     * Метод для установки коллекции
-     *
-     * @param map коллекции
-     */
+        /**
+         * Метод для установки коллекции
+         *
+         * @param map коллекции
+         */
 
-    public static void setMap(TreeMap<String, Worker> map) {
-        CollectionManager.map = Objects.requireNonNullElseGet(map, TreeMap::new);
+        public static void setMap(TreeMap < String, Worker > map){
+            CollectionManager.map = Objects.requireNonNullElseGet(map, TreeMap::new);
+        }
+    public static void insertInScript(String[] args) throws Exception {
+        if (args.length >= 10) {
+            ArrayList<String> data = new ArrayList<>();
+            for (int i = 1; i < args.length; i++) data.add(args[i]);
+            Worker worker = new Worker(data.toArray(new String[0]));
+            CollectionManager.add(args[1], worker);
+            System.out.println("элемент был добавлен в коллекцию");
+        } else {
+            System.out.println("недостаточно аргументов для добавления элемента в коллекцию");
+        }
     }
 }
-

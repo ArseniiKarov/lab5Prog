@@ -7,11 +7,11 @@ public class Organization {
     private Address officialAddress; //Поле может быть null
 
     /**
-     * конструктор организации
+     * Конструктор организации
      * @param fullName полное имя
      * @param employeesCount количество работников
      * @param type тип
-     * @param officialAddress официальный адресс
+     * @param officialAddress официальный адрес
      */
 
     public Organization(String fullName, int employeesCount, OrganizationType type, Address officialAddress){
@@ -20,6 +20,11 @@ public class Organization {
         this.type = type;
         this.officialAddress = officialAddress;
     }
+
+    public Organization() {
+
+    }
+
     /**
      * Метод для получения полное имя
      * @return полное имя
@@ -42,8 +47,8 @@ public class Organization {
         return type;
     }
     /**
-     * Метод для получения официальный адресс
-     * @return официальный адресс
+     * Метод для получения официальный адрес
+     * @return официальный адрес
      */
     public Address getOfficialAddress(){
         return officialAddress;
@@ -76,8 +81,8 @@ public class Organization {
     }
 
     /**
-     * Метод для установки официального адресса
-     * @param officialAddress официальный адресс
+     * Метод для установки официального адреса
+     * @param officialAddress официальный адрес
      */
     public void setOfficialAddress(Address officialAddress){
         this.officialAddress = officialAddress;

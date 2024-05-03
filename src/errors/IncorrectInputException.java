@@ -6,7 +6,7 @@ public class IncorrectInputException extends Exception{
      * @param data
      */
     public IncorrectInputException(String data){
-        super("Неправильный аргумент ввода" +data);
+        super("Неправильный аргумент ввода " + data);
     }
 
 }
